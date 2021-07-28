@@ -8,6 +8,8 @@ public class CasadocodigoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CasadocodigoApplication.class, args);
+
+		System.out.println("sadnkjejjeldfkl");
 	}
 
 }
