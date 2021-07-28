@@ -17,7 +17,7 @@ import java.net.URI;
 
 @RestController
 @Validated
-@RequestMapping("/autores2")
+@RequestMapping("/autores")
 public class AutorController {
 
     @Autowired
@@ -31,8 +31,8 @@ public class AutorController {
           throw new IllegalArgumentException("Descrição não pode ser maior que 400");
       }
         Autor autor = autorForm.convertAutor();
-        Autor autor1 = autorRepository.save(autor);
-        //URI uri = uriBuilder.path("/autores{id}").buildAndExpand(autor1.getId()).toUri();
-        return ResponseEntity.ok(new AutorDto(autor1));
+        autorRepository.save(autor);
+        URI uri = uriBuilder.path("/autores{id}").buildAndExpand(autor.getId()).toUri();
+        return ResponseEntity.ok().body(new AutorDto(autor));
     }
 }

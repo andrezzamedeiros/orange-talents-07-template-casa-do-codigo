@@ -15,4 +15,12 @@ public class AutorDto implements Serializable {
         this.descricao = autor.getDescricao();
         this.nome = autor.getNome();
     }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public String getNome() {
+        return nome;
+    }
 }
