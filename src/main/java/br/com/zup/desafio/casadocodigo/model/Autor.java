@@ -30,18 +30,25 @@ public class Autor {
     @NotNull(message = "A descrição não pode ser nula") @NotEmpty(message = "A descrição não pode estar vazia")
     private String descricao;
 
-
+    @Deprecated
     public Autor() {
     }
 
-    public Long getId() {
-        return id;
+    public Autor(Long id, String nome, String email, String descricao) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.descricao = descricao;
     }
 
     public Autor(String nome, String email, String descricao) {
         this.nome = nome;
         this.email = email;
         this.descricao = descricao;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getEmail() {
@@ -59,4 +66,5 @@ public class Autor {
     public String getNome() {
         return nome;
     }
+
 }

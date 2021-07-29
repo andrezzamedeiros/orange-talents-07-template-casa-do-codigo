@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 public class AutorForm {
 
+    private Long id;
     @NotNull(message = "Nome não pode ser nulo")
     @NotBlank(message = "O nome não pode estar vazio")
     private String nome;
@@ -38,5 +39,6 @@ public class AutorForm {
 
     public Autor convertAutor() {
         return new Autor(this.nome, this.email, this.descricao);
+
     }
 }

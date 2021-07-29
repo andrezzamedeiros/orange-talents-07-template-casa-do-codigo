@@ -5,14 +5,17 @@ import br.com.zup.desafio.casadocodigo.Repository.AutorRepository;
 import br.com.zup.desafio.casadocodigo.model.Autor;
 import br.com.zup.desafio.casadocodigo.model.dto.AutorDto;
 import br.com.zup.desafio.casadocodigo.model.form.AutorForm;
+import br.com.zup.desafio.casadocodigo.validacao.ValidaEmailDuplicado;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
+import javax.validation.Validator;
 import java.net.URI;
 
 @RestController
@@ -21,16 +24,23 @@ import java.net.URI;
 public class AutorController {
 
     @Autowired
-    AutorRepository autorRepository;
+    private AutorRepository autorRepository;
+
+    @Autowired
+    private ValidaEmailDuplicado validaEmailDuplicado;
 
     @PostMapping
     @Transactional
-    public ResponseEntity<AutorDto> cadastrar(@RequestBody @Valid AutorForm autorForm, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<AutorDto> cadastrar(@RequestBody @Valid AutorForm autorForm, UriComponentsBuilder uriBuilder) throws Exception {
 
       if(autorForm.getDescricao().length() > 400){
           throw new IllegalArgumentException("Descrição não pode ser maior que 400");
       }
-        Autor autor = autorForm.convertAutor();
+
+      Autor autor = autorForm.convertAutor();
+      if(validaEmailDuplicado.valida(autor)){
+          throw new IllegalArgumentException("Email já cadastrado!");
+      }
         autorRepository.save(autor);
         URI uri = uriBuilder.path("/autores{id}").buildAndExpand(autor.getId()).toUri();
         return ResponseEntity.ok().body(new AutorDto(autor));
