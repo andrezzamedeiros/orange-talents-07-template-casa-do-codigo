@@ -29,6 +29,11 @@ public class AutorController {
     @Autowired
     private ValidaEmailDuplicado validaEmailDuplicado;
 
+    @InitBinder
+    public void init(WebDataBinder binder){
+        binder.addValidators(validaEmailDuplicado);
+    }
+
     @PostMapping
     @Transactional
     public ResponseEntity<AutorDto> cadastrar(@RequestBody @Valid AutorForm autorForm, UriComponentsBuilder uriBuilder) throws Exception {
@@ -36,11 +41,8 @@ public class AutorController {
       if(autorForm.getDescricao().length() > 400){
           throw new IllegalArgumentException("Descrição não pode ser maior que 400");
       }
-
       Autor autor = autorForm.convertAutor();
-      if(validaEmailDuplicado.valida(autor)){
-          throw new IllegalArgumentException("Email já cadastrado!");
-      }
+
         autorRepository.save(autor);
         URI uri = uriBuilder.path("/autores{id}").buildAndExpand(autor.getId()).toUri();
         return ResponseEntity.ok().body(new AutorDto(autor));
