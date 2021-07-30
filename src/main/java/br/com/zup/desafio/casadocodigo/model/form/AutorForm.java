@@ -1,9 +1,9 @@
 package br.com.zup.desafio.casadocodigo.model.form;
 
 import br.com.zup.desafio.casadocodigo.model.Autor;
+import br.com.zup.desafio.casadocodigo.validacao.UniqueValue;
 
 import javax.validation.constraints.*;
-import java.time.LocalDate;
 
 public class AutorForm {
 
@@ -13,6 +13,7 @@ public class AutorForm {
     private String nome;
     @NotNull(message = "Email não pode ser nulo")
     @NotBlank(message = "O email não pode estar vazio")
+    @UniqueValue(domainClass = Autor.class, fieldName = "email")
     private String email;
     @NotNull(message = "A descrição não pode ser nula")
     @NotBlank(message = "A descrição não pode estar vazia")

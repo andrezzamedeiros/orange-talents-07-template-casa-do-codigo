@@ -1,5 +1,7 @@
 package br.com.zup.desafio.casadocodigo.model;
 
+import br.com.zup.desafio.casadocodigo.validacao.UniqueValue;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,7 +15,8 @@ public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull@NotBlank
+    @NotNull
+    @NotBlank
     private String nome;
 
     public Categoria() {
