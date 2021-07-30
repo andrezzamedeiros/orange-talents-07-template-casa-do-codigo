@@ -8,9 +8,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = {UniqueValueValidator.class})
+@Constraint(validatedBy = {ExistsIdValidator.class})
 @Target({ElementType.FIELD})
-public @interface UniqueValue {
+public @interface ExistsId {
 
     String message()default "{br.com.zup.desafio.casadocodigo.beanvalidation.uniquevalue}";
 
@@ -21,4 +21,5 @@ public @interface UniqueValue {
     String fieldName();
 
     Class<?> domainClass();
+
 }

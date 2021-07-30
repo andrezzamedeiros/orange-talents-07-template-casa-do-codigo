@@ -18,7 +18,7 @@ import java.net.URI;
 
 @RestController
 @Validated
-@RequestMapping("/autores")
+@RequestMapping("/api/autores")
 public class AutorController {
 
     @Autowired

@@ -19,11 +19,11 @@ public class Categoria {
     @NotBlank
     private String nome;
 
+    @Deprecated
     public Categoria() {
     }
 
-    public Categoria(Long id, String nome) {
-        this.id = id;
+    public Categoria( String nome) {
         this.nome = nome;
     }
 
