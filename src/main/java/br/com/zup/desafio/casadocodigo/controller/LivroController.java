@@ -8,7 +8,6 @@ import br.com.zup.desafio.casadocodigo.model.Livro;
 import br.com.zup.desafio.casadocodigo.model.dto.DetalhesLivroDto;
 import br.com.zup.desafio.casadocodigo.model.dto.LivroDto;
 import br.com.zup.desafio.casadocodigo.model.form.LivroForm;
-import br.com.zup.desafio.casadocodigo.validacao.exceptions.NotFoundExceptionDefault;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -44,17 +43,13 @@ public class LivroController {
         return ResponseEntity.ok().body(LivroDto.converter(livros));
     }
 
-    @GetMapping("/{id}/{nomeAutor}")
-    public ResponseEntity<DetalhesLivroDto> listaPorId(@PathVariable Long id, @PathVariable String nomeAutor) throws NotFoundException {
+    @GetMapping("/{id}")
+    public ResponseEntity<DetalhesLivroDto> listaPorId(@PathVariable Long id) throws NotFoundException {
 
         Optional<Livro> livro = livroRepository.findById(id);
         if(!livro.isPresent()){
             throw new NotFoundException("Livro não encontrado");
         }
-        Optional<Autor> autor = autorRepository.findByNome(nomeAutor);
-        if(!autor.isPresent()){
-            throw new NotFoundException("Autor não encontrado");
-        }
-        return ResponseEntity.ok(new DetalhesLivroDto(livro.get(), autor.get()));
+        return ResponseEntity.ok(new DetalhesLivroDto(livro.get()));
     }
 }

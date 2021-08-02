@@ -25,13 +25,11 @@ public class DetalhesLivroDto {
     private Double preco;
     private Integer nPaginas;
     private String isbn;
-    private String nomeAutor;
-    private String descricaoAutor;
+   private DetalhesAutorDto detalhesAutor;
 
-    public DetalhesLivroDto(Livro livro, Autor autor) {
+    public DetalhesLivroDto(Livro livro) {
         this.id = livro.getId();
-        this.descricaoAutor = autor.getDescricao();
-        this.nomeAutor = autor.getNome();
+        this.detalhesAutor = new DetalhesAutorDto(livro.getAutor());
         this.resumo = livro.getResumo();
         this.titulo = livro.getTitulo();
         this.isbn = livro.getIsbn();
@@ -68,14 +66,8 @@ public class DetalhesLivroDto {
         return isbn;
     }
 
-    public String getNomeAutor() {
-        return nomeAutor;
+    public DetalhesAutorDto getAutorDto() {
+        return detalhesAutor;
     }
-
-    public String getDescricaoAutor() {
-        return descricaoAutor;
-    }
-
-
 }
 

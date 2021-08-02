@@ -1,6 +1,5 @@
 package br.com.zup.desafio.casadocodigo.validacao;
 
-import br.com.zup.desafio.casadocodigo.validacao.exceptions.NotFoundExceptionDefault;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
