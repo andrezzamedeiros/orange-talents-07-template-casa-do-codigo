@@ -2,14 +2,11 @@ package br.com.zup.desafio.casadocodigo.model;
 
 import br.com.zup.desafio.casadocodigo.validacao.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.Future;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Entity
 public class Livro {
