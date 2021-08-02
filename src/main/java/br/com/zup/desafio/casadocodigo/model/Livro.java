@@ -1,8 +1,6 @@
 package br.com.zup.desafio.casadocodigo.model;
 
-import br.com.zup.desafio.casadocodigo.validacao.UniqueValue;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.Future;

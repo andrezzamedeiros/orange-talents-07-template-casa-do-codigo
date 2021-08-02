@@ -1,5 +1,6 @@
 package br.com.zup.desafio.casadocodigo.validacao;
 
+import br.com.zup.desafio.casadocodigo.validacao.annotations.UniqueValue;
 import org.springframework.util.Assert;
 
 import javax.persistence.EntityManager;
@@ -26,7 +27,7 @@ public class UniqueValueValidator implements ConstraintValidator<UniqueValue, Ob
         Query query = manager.createQuery("select 1 from " + klass.getName() +" where " + domainAtributte +"=:value");
         query.setParameter("value", value);
         List<?>list = query.getResultList();
-        Assert.state(list.size() <= 1, "Foi encontrado mais de um" + klass + "com o atributo "+ domainAtributte + "= " +value);
+        Assert.state(list.size() <= 1, "Foi encontrado pelo menos um" + klass + "com o atributo "+ domainAtributte + "= " +value);
         return list.isEmpty();
     }
 }

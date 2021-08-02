@@ -1,4 +1,6 @@
-package br.com.zup.desafio.casadocodigo.validacao;
+package br.com.zup.desafio.casadocodigo.validacao.annotations;
+
+import br.com.zup.desafio.casadocodigo.validacao.ExistsIdValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;

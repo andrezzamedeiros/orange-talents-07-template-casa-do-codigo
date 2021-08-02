@@ -1,4 +1,4 @@
-package br.com.zup.desafio.casadocodigo.validacao;
+package br.com.zup.desafio.casadocodigo.model.exceptions;
 
 public class ErroDto {
 

@@ -5,8 +5,8 @@ import br.com.zup.desafio.casadocodigo.Repository.CategoriaRepository;
 import br.com.zup.desafio.casadocodigo.model.Autor;
 import br.com.zup.desafio.casadocodigo.model.Categoria;
 import br.com.zup.desafio.casadocodigo.model.Livro;
-import br.com.zup.desafio.casadocodigo.validacao.ExistsId;
-import br.com.zup.desafio.casadocodigo.validacao.UniqueValue;
+import br.com.zup.desafio.casadocodigo.validacao.annotations.ExistsId;
+import br.com.zup.desafio.casadocodigo.validacao.annotations.UniqueValue;
 import org.springframework.util.Assert;
 
 import javax.persistence.*;

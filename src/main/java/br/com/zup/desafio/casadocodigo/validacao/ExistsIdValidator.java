@@ -1,6 +1,7 @@
 package br.com.zup.desafio.casadocodigo.validacao;
 
-import javax.persistence.Entity;
+import br.com.zup.desafio.casadocodigo.validacao.annotations.ExistsId;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;

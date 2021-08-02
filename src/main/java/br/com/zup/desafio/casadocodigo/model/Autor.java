@@ -1,7 +1,7 @@
 package br.com.zup.desafio.casadocodigo.model;
 
 
-import br.com.zup.desafio.casadocodigo.validacao.UniqueValue;
+import br.com.zup.desafio.casadocodigo.validacao.annotations.UniqueValue;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

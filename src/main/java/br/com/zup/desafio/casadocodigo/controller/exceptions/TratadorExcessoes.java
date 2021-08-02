@@ -1,5 +1,6 @@
-package br.com.zup.desafio.casadocodigo.validacao;
+package br.com.zup.desafio.casadocodigo.controller.exceptions;
 
+import br.com.zup.desafio.casadocodigo.model.exceptions.ErroDto;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 import java.util.ArrayList;
 import java.util.List;

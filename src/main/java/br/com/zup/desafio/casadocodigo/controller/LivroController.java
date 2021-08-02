@@ -44,7 +44,7 @@ public class LivroController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DetalhesLivroDto> listaPorId(@PathVariable Long id) throws NotFoundException {
+    public ResponseEntity<DetalhesLivroDto> DetalheLivroPorId(@PathVariable Long id) throws NotFoundException {
 
         Optional<Livro> livro = livroRepository.findById(id);
         if(!livro.isPresent()){
